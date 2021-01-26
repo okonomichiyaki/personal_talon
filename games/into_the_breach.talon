@@ -1,7 +1,12 @@
 app.name: Breach.exe
 -
 confirm: key(space)
-finish: key(space)
+(hash|finish): key(space)
 repair: key(r)
 reset turn: key(backspace)
-undo move: key(shift)
+(dunder move|undo move): key(shift)
+primary: key(1)
+secondary: key(2)
+one: skip()
+two: skip()
+bang: skip()
