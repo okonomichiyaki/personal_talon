@@ -8,6 +8,7 @@ alt tab:
     key(ctrl:up)
 throttle mode: user.enable_throttle()
 caret: skip()
+go nine: edit.line_end()
 
 # misfires and replacements from pop to click:
 
