@@ -32,6 +32,10 @@ add: key(keypad_plus)
 remove: key(keypad_minus)
 offer: key(o)
 
+take it:
+    key(space)
+    key(g)
+
 # directions
 north: key(keypad_8)
 south: key(keypad_2)
@@ -45,6 +49,7 @@ up: key(shift-,)
 down: key(shift-.)
 
 camp: key(shift-m)
+rest until healed: key(`)
 
 # kushrala
 freeze: key(shift-r)
