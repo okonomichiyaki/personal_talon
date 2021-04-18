@@ -10,6 +10,15 @@ throttle mode: user.enable_throttle()
 caret: skip()
 go nine: edit.line_end()
 
+copy under:
+    mouse_click()
+    mouse_click()
+    edit.copy()
+paste under:
+    mouse_click()
+    mouse_click()
+    edit.paste()
+
 # misfires and replacements from pop to click:
 
 one: skip()
