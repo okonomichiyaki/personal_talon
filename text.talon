@@ -22,5 +22,5 @@ inside singles:
 
 trip: "t"
 blank: " "
-ship: " "
+bar: " "
 slam: key(enter)
