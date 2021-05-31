@@ -7,12 +7,15 @@ settings():
 slow: key(f2)
 
 (high jato|jato|hi jato|hiatal): key(1)
+(yuki|you I|I|yuuki): key(2)
 morgan: key(3)
 (tacoma|takuma): key(5)
 
 sword: key(a)
 stone: key(d)
 socket: key(d)
+whistle: key(d)
+trap: key(s)
 (star|start): key(s)
 wind: key(s)
 
@@ -56,4 +59,3 @@ zoom in:
     user.mouse_scroll_up()
     user.mouse_scroll_up()
     user.mouse_scroll_up()
-    
