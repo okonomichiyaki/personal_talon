@@ -12,3 +12,8 @@ cool: user.paste("く")
 catch: user.paste("け")
 coke: user.paste("こ")
 
+deep look:
+    key(ctrl:down)
+    key(c)
+    key(c)
+    key(ctrl:up)
