@@ -7,3 +7,5 @@ file hunt <user.text> [over]:
   insert(text)
 generate code: key(ctrl-n)
 rename: key(shift-f6)
+(import that|suggest that): key(alt-enter)
+#comma: ", "
