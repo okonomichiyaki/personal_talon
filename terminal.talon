@@ -1,6 +1,9 @@
 tag: terminal
 -
 change [<user.text>]: "cd {text or ''}"
+change [<user.text>] tab:
+    "cd {text}"
+    key(tab)
 change home: "cd ~\n"
 change up: "cd ..\n"
 change talon: "cd ~/.talon/user/knausj_talon/"
