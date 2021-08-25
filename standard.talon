@@ -22,6 +22,10 @@ paste under:
     mouse_click()
     edit.paste()
 
+tab replace:
+    app.tab_close()
+    app.tab_open()
+
 # miscellaneous misfires:
 caret: skip()
 go nine: edit.line_end()
