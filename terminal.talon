@@ -27,3 +27,10 @@ copy line:
     "echo \""
     key(ctrl-e)
     "\" | pbcopy"
+
+find by name: "find . -name "
+
+make direct [<user.text>]: "mkdir {text or ''}"
+copy: "cp "
+move [<user.text>]: "mv {text or ''}"
+up: ".."
