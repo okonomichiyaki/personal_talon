@@ -1,3 +1,8 @@
+
+san san|sam sam:
+    key(enter)
+    key(enter)
+
 floppy disk: edit.save()
 floppy: edit.save()
 alt tab:
@@ -21,6 +26,10 @@ paste under:
     mouse_click()
     mouse_click()
     edit.paste()
+clear under:
+    mouse_click()
+    mouse_click()
+    edit.delete()
 
 tab replace:
     app.tab_close()
@@ -29,6 +38,7 @@ tab replace:
 # miscellaneous misfires:
 caret: skip()
 go nine: edit.line_end()
+home bar: ", "
 
 # misfires and replacements from pop to click:
 one: skip()

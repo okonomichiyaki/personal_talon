@@ -1,5 +1,8 @@
 tag: terminal
 -
+
+#paste that: key(cmd-v)
+
 change [<user.text>]: "cd {text or ''}"
 change [<user.text>] tab:
     "cd {text}"
@@ -34,3 +37,9 @@ make direct [<user.text>]: "mkdir {text or ''}"
 copy: "cp "
 move [<user.text>]: "mv {text or ''}"
 up: ".."
+remove: "rm "
+
+abort that:
+    key(ctrl-a)
+    "#"
+    key(enter)

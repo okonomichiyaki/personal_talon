@@ -8,4 +8,13 @@ file hunt <user.text> [over]:
 generate code: key(ctrl-n)
 rename: key(shift-f6)
 (import that|suggest that): key(alt-enter)
-#comma: ", "
+replace in path: key(ctrl-shift-r)
+cucumber:
+  "// Given "
+  key(enter)
+  "// When "
+  key(enter)
+  "// Then "
+  key(up)
+  key(up)
+  edit.line_end()
