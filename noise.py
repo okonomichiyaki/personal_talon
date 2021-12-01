@@ -45,9 +45,12 @@ class Actions:
         print(*pop_quick_action)
         scripting.core.CoreActions.run_command(*pop_quick_action)
 
-    def hiss(): 
+    def hiss_up():
         """hiss action overrideable by contexts"""
-        print("hissing")
+        pass
+
+    def hiss_down(): 
+        """hiss action overrideable by contexts"""
         pass
 
     def hiss_quick_action_clear():
@@ -97,10 +100,9 @@ def on_hiss(active):
     global hiss_quick_action
     print("on_hiss", active)
     if not active:
-        if hiss_quick_action is None:
-            actions.user.hiss()
-        else:
-            actions.user.hiss_quick_action_run()
+        actions.user.hiss_up()
+    else:
+        actions.user.hiss_down()
 
 try:
     noise.register("pop", on_pop)
