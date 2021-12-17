@@ -1,23 +1,13 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app, noise, cron
-
-state="Normal"
-
-def surround_key_with_console(key):
-    if state == "Normal":
-        actions.key(key)
-    elif state == "Open":
-        actions.key("escape")
-        actions.key(key)
-        actions.key("`")
+from .unreal_mouse_look import surround_key_with_console
 
 mod = Module()
 @mod.action_class
 class Actions:
-    def pk_reset():
-        """reset the stored state of the console"""
-        print("pk reset")
-        global state
-        state="Normal"
+    def pk_reality():
+        """toggle reality"""
+        print("pk reality")
+        surround_key_with_console("x")
 
     def pk_interact():
         """press E key"""
@@ -29,22 +19,6 @@ class Actions:
         print("pk close")
         surround_key_with_console("q")
 
-    def pk_menu():
-        """press escape key"""
-        print("pk menu")
-        surround_key_with_console("escape")
-
-    def pk_toggle_console():
-        """toggles the console based on the stored state"""
-        global state
-        print("pk toggle console")
-        if state == "Normal":
-            actions.key("`")
-            state = "Open"
-        elif state == "Open":
-            actions.key("escape")
-            state = "Normal"
-    
     def pk_auto_walk():
         """press backslash key"""
         print("pk auto walk")
@@ -64,4 +38,4 @@ class paradise_killer_user:
 
     def hiss_up():
         print("pk hiss up")
-        surround_key_with_console("space")
+        #surround_key_with_console("space")
