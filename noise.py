@@ -13,6 +13,7 @@ class Actions:
 
     def pop(): 
         """pop action overrideable by contexts"""
+        print("pop action")
         actions.user.mouse_click_or_zoom()
 
     def pop_quick_action_clear():
@@ -88,6 +89,7 @@ pop_quick_action_last = None
 pop_quick_action_history = []
 def on_pop(active):
     global pop_quick_action
+    print("on_pop")
     if pop_quick_action is None:
         actions.user.pop()
     else:
