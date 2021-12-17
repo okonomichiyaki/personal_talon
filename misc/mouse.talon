@@ -1,3 +1,8 @@
+mouse center:
+	mouse_move(960,540)
+mouse hide:
+	mouse_move(1921,1081)
+
 snore mouse:
 	user.mouse_sleep()
 control mouse:
