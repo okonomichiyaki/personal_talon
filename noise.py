@@ -48,11 +48,11 @@ class Actions:
 
     def hiss_up():
         """hiss action overrideable by contexts"""
-        pass
+        print("hiss up action")
 
     def hiss_down(): 
         """hiss action overrideable by contexts"""
-        pass
+        print("hiss down action")
 
     def hiss_quick_action_clear():
         """Clears the quick macro"""
