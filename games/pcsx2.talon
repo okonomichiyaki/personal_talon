@@ -10,6 +10,8 @@ right: key(f)
 up: key(e)
 down: key(d)
 
+# how would I override the action "edit.right()" ?
+
 (angle|triangle): key(i)
 circle: key(l)
 cross: key(k)

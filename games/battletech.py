@@ -1,30 +1,17 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app, noise, cron
 
 holding_wasd=False
-holding_middle=False
-holding_right=False
-sliding=False
 
 thirdy=1080/3
 thirdx=1920/3
 
 def release_all():
-    global holding_wasd
-    global holding_middle
-    global holding_right
-    global sliding
     actions.key("w:up")
     actions.key("s:up")
     actions.key("a:up")
     actions.key("d:up")
     actions.key("alt:up")
-    actions.mouse_release(0)
-    actions.mouse_release(1)
-    actions.mouse_release(2)
     holding_wasd = False
-    holding_middle = False
-    holding_right = False
-    sliding = False
 
 def hold_wasd(key):
     global holding_wasd
