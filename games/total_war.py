@@ -42,24 +42,6 @@ def start_wasd():
     elif (x > 2*thirdx):
         hold_wasd("d")
 
-def toggle_wasd():
-    global holding_wasd
-    x, y = ctrl.mouse_pos()
-    print("(hold) x:",x,"y:",y)
-
-    if holding_wasd:
-        release_all()
-    elif (y < thirdy and x > thirdx and x < 2*thirdx):
-        hold_wasd("w")
-    elif (y > 2*thirdy and x > thirdx and x < 2*thirdx):
-        hold_wasd("s")
-    elif (x < thirdx):
-        hold_wasd("a")
-    elif (x > 2*thirdx):
-        hold_wasd("d")
-    #else:
-        #actions.user.mouse_click_or_zoom()
-
 def toggle_middle():
     global holding_middle
     if holding_middle:

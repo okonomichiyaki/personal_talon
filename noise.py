@@ -13,7 +13,6 @@ class Actions:
 
     def pop(): 
         """pop action overrideable by contexts"""
-        print("pop action")
         actions.user.mouse_click_or_zoom()
 
     def pop_quick_action_clear():
@@ -48,11 +47,11 @@ class Actions:
 
     def hiss_up():
         """hiss action overrideable by contexts"""
-        print("hiss up action")
+        pass
 
     def hiss_down(): 
         """hiss action overrideable by contexts"""
-        print("hiss down action")
+        pass
 
     def hiss_quick_action_clear():
         """Clears the quick macro"""
@@ -89,7 +88,6 @@ pop_quick_action_last = None
 pop_quick_action_history = []
 def on_pop(active):
     global pop_quick_action
-    print("on_pop")
     if pop_quick_action is None:
         actions.user.pop()
     else:
@@ -100,7 +98,6 @@ hiss_quick_action_last = None
 hiss_quick_action_history = []
 def on_hiss(active):
     global hiss_quick_action
-    print("on_hiss", active)
     if not active:
         actions.user.hiss_up()
     else:
