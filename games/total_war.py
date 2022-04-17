@@ -1,46 +1,35 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app, noise, cron
+from user.personal_talon.games.screen_regions import get_from_regions, hold, nop
 
 holding_wasd=False
 holding_middle=False
 holding_right=False
 sliding=False
 
-thirdy=1080/3
-thirdx=1920/3
-
 def release_all():
     global holding_wasd
     global holding_middle
     global holding_right
     global sliding
-    actions.key("w:up")
-    actions.key("s:up")
-    actions.key("a:up")
-    actions.key("d:up")
-    actions.key("alt:up")
-    actions.mouse_release(0)
-    actions.mouse_release(1)
-    actions.mouse_release(2)
+    for k in ["w","a","s","d","alt"]:
+        actions.key(k+":up")
+    for b in [0,1,2]:
+        actions.mouse_release(b)
     holding_wasd = False
     holding_middle = False
     holding_right = False
     sliding = False
 
-def hold_wasd(key):
-    global holding_wasd
-    actions.key(key + ":down")
-    holding_wasd = True
+hold_functions = [
+    [ hold("w","a"), hold("w"),  hold("w","d") ],
+    [ hold("a"),     nop,        hold("d")     ],
+    [ hold("a","s"), hold("s"),  hold("s","d") ]
+]
 
 def start_wasd():
-    x, y = ctrl.mouse_pos()
-    if (y < thirdy and x > thirdx and x < 2*thirdx):
-        hold_wasd("w")
-    elif (y > 2*thirdy and x > thirdx and x < 2*thirdx):
-        hold_wasd("s")
-    elif (x < thirdx):
-        hold_wasd("a")
-    elif (x > 2*thirdx):
-        hold_wasd("d")
+    global holding_wasd
+    get_from_regions(hold_functions)()
+    holding_wasd = True
 
 def toggle_middle():
     global holding_middle
