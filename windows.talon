@@ -17,3 +17,10 @@ deep look:
     key(c)
     key(c)
     key(ctrl:up)
+
+alt tab:
+    key(alt:down)
+    key(ctrl:down)
+    key(tab)
+    key(alt:up)
+    key(ctrl:up)

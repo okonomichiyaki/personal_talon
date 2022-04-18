@@ -1,3 +1,8 @@
+mouse center:
+	mouse_move(960,540)
+mouse hide:
+	mouse_move(1921,1081)
+
 snore mouse:
 	user.mouse_sleep()
 control mouse:
@@ -34,7 +39,7 @@ righty:
 #option = alt
 #shift
 #super = windows key
-<user.modifiers> touch: 
+<user.modifiers> (touch|click): 
 	key("{modifiers}:down")
 	mouse_click(0)
 	key("{modifiers}:up")

@@ -5,26 +5,10 @@ hiss=False
 midy=1080/2
 thirdx=1920/3
 
-def do_wasd():
-    x, y = ctrl.mouse_pos()
-    print("x:",x,"y:",y)
-    if (y < midy and x > thirdx and x < 2*thirdx):
-        actions.key("w")
-    elif (y > midy and x > thirdx and x < 2*thirdx):
-        actions.key("s")
-    elif (x < thirdx):
-        actions.key("a")
-    elif (x > 2*thirdx):
-        actions.key("d")
-
 def hold_wasd():
     x, y = ctrl.mouse_pos()
     print("(hold) x:",x,"y:",y)
-    if (y < midy and x > thirdx and x < 2*thirdx):
-        actions.key("w:down")
-    elif (y > midy and x > thirdx and x < 2*thirdx):
-        actions.key("s:down")
-    elif (x < thirdx):
+    if (x < thirdx):
         actions.key("a:down")
     elif (x > 2*thirdx):
         actions.key("d:down")
@@ -48,15 +32,15 @@ mod = Module()
 ctx = Context()
 ctx.matches = r"""
 os: linux
-and app.name: steam_app_1092790
+and app.name: artofrally_demo.x64
 """
 @ctx.action_class("user")
-class inscryption_user:
+class rally_user:
     def hiss_down():
-        pass
+        wasd()
     
     def hiss_up():
-        pass
+        wasd()
 
     def pop():
-        do_wasd()
+        pass
