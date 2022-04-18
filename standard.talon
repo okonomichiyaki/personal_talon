@@ -18,11 +18,13 @@ lip surf:
     speech.disable()
     user.history_disable()
 
+glue that: edit.paste()
+
 copy under:
     mouse_click()
     mouse_click()
     edit.copy()
-paste under:
+(glue|paste) under:
     mouse_click()
     mouse_click()
     edit.paste()
