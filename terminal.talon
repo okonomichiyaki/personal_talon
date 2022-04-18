@@ -1,6 +1,7 @@
 tag: terminal
 -
 
+bundle exec ruby: "bundle exec ruby"
 #paste that: key(cmd-v)
 
 change [<user.text>]: "cd {text or ''}"
@@ -11,6 +12,12 @@ change home: "cd ~\n"
 change up: "cd ..\n"
 change talon: "cd ~/.talon/user/knausj_talon/"
 
+sig kill: key(ctrl-c)
+grep recurse:
+    "grep -r '' ."
+    key(left)
+    key(left)
+    key(left)
 silver search [<user.text>]:
     "ag {text or ''}"
     key(enter)
