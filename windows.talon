@@ -1,5 +1,6 @@
 os: windows
 -
+ge force record: key(alt-f9)
 on screen keyboard: key(super-ctrl-o)
 start menu: key(super)
 kana: key(alt-`)
