@@ -1,5 +1,4 @@
 os: windows
-app.name: Titan Two Programming Software
 app.name: OBS Studio
 -
 settings():
@@ -16,6 +15,7 @@ back|cancel|close: key(b)
 home: key(h)
 auto: key(c)
 menu: key(x)
+vote: key(+)
 reset camera: key(e)
 walk: user.ns_walk()
 run: user.ns_run()

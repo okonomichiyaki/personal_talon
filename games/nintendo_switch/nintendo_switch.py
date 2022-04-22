@@ -42,7 +42,6 @@ def make_job(region_keys):
             actions.key(k+":down")
     return job
 
-
 def release_all():
     global holding
     for k in ["j","k","n","m","u","i","o","p","s","d","f","g"]:
@@ -99,7 +98,6 @@ class Actions:
 ctx = Context()
 ctx.matches = r"""
 os: windows
-app.name: Titan Two Programming Software
 app.name: OBS Studio
 """
 @ctx.action_class("user")
