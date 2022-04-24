@@ -31,7 +31,10 @@ bat: skip()
 focus: key(w)
 highlight: key(h)
 
-pick: key(ctrl:down)
+pick:
+    key(ctrl:down)
+    mouse_click(0)
+    key(ctrl:up)
 
 zoom out:
     user.mouse_scroll_down()
