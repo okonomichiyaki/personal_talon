@@ -1,4 +1,4 @@
-app: vscode
+tag: user.talon
 -
 
 bind key [<user.text>]:
