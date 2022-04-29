@@ -6,6 +6,27 @@ WIDTH = 1920
 HEIGHT = 1080
 canvas = None
 
+WASD3 = [
+    [ ["w","a"], ["w"], ["w","d"]  ],
+    [ ["a"],     [],    ["d"]      ],
+    [ ["a","s"], ["s"], ["d","s"] ]
+]
+
+WASD4 = [
+    [ ["w","a"], ["w"], ["w"], ["w","d"]  ],
+    [ ["a"],     [],    [],    ["d"]      ],
+    [ ["a"],     [],    [],    ["d"]      ],
+    [ ["a","s"], ["s"], ["s"], ["d","s"] ]
+]
+
+WASD5 = [
+    [ ["w","a"], ["w"], ["w"], ["w"], ["w","d"]  ],
+    [ ["a"],     [],    [],    [],    ["d"]      ],
+    [ ["a"],     [],    [],    [],    ["d"]      ],
+    [ ["a"],     [],    [],    [],    ["d"]      ],
+    [ ["a","s"], ["s"], ["s"], ["s"], ["d","s"]  ]
+]
+
 def _get_splits(matrix):
     """given a two dimensional array (assumes every row has same number of columns), calculate the number of splits"""
     x_splits = len(matrix[0])
@@ -26,6 +47,13 @@ def _get_from_regions(regions, x, y):
     i, j = _get_index(regions, WIDTH, HEIGHT, x, y)
     return regions[i][j]
 
+def collect_keys(regions):
+    keys = set()
+    for i in regions:
+        for j in regions:
+            keys.update(j)
+    return keys
+
 def get_from_regions(regions):
     """returns the element pointed to by the current mouse position"""
     x, y = ctrl.mouse_pos()
@@ -39,7 +67,6 @@ def hold(*args):
     def op():
         for name in args:
             actions.key(name + ":down")
-            held.add(name)
     return op
 
 def tap(name):
@@ -71,12 +98,13 @@ def show_overlay(regions):
             for m in range(0, y_splits):
                 x = n * w
                 y = m * h
+                key = _get_from_regions(regions, x + w / 2, y + h / 2)
+                #if len(key) > 0:
                 c.paint.style = c.paint.Style.STROKE
                 c.draw_rect(Rect(x,y,w,h))
                 c.paint.typeface = "arial"
                 c.paint.style = c.paint.Style.FILL
                 c.paint.textsize = round(h / 2)
-                key = _get_from_regions(regions, x + w / 2, y + h / 2)
                 text = ",".join(key)
                 rect = c.paint.measure_text(text)[1]
                 xt = x + w / 2 - rect.x - rect.width / 2

@@ -1,24 +1,37 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app, noise, cron
-from user.personal_talon.games.screen_regions import get_from_regions, hold, nop
+from talon.experimental import locate
+from user.personal_talon.games.screen_regions import get_from_regions, hold, nop, show_overlay, hide_overlay, WASD5
 
 holding_wasd=False
 holding_middle=False
 holding_right=False
 sliding=False
 
+screen_watcher = None
+
+def start_screen_watcher():
+    global screen_watcher
+    if screen_watcher:
+        return
+    def job():
+        path="C:\\Users\\michi\\Pictures\\TWW3_end_turn.png"
+        matches = locate.locate(path)
+        if len(matches) > 0:
+            print("found the end turn button")
+    screen_watcher = cron.interval("500ms", job)
+
+def focus_handler(window):
+    if "Total War: WARHAMMER 3" in window.title:
+        start_screen_watcher()
+
+#ui.register("win_focus", focus_handler)
+
 def release_all():
-    global holding_wasd
-    global holding_middle
-    global holding_right
-    global sliding
+    stop_cron_job()
     for k in ["w","a","s","d","alt"]:
         actions.key(k+":up")
     for b in [0,1,2]:
         actions.mouse_release(b)
-    holding_wasd = False
-    holding_middle = False
-    holding_right = False
-    sliding = False
 
 hold_functions = [
     [ hold("w","a"), hold("w"),  hold("w","d") ],
@@ -26,8 +39,56 @@ hold_functions = [
     [ hold("a","s"), hold("s"),  hold("s","d") ]
 ]
 
+holding = set()
+cron_job = None
+current_keys = None
+
+def make_job(region_keys):
+    def job():
+        global holding
+        new_holding = set()
+        keys = get_from_regions(region_keys)
+        for k in keys:
+            new_holding.add(k)
+        stop_holding = holding.difference(new_holding)
+        for k in stop_holding:
+            actions.key(k+":up")
+        holding = new_holding
+        for k in holding:
+            actions.key(k+":down")
+    return job
+
+def stop_cron_job():
+    global cron_job
+    global current_keys
+    global holding
+    if cron_job:
+        cron.cancel(cron_job)
+        holding = set()
+        for k in ["w","a","s","d","alt"]:
+            actions.key(k+":up")
+        cron_job = None
+        current_keys = None
+        hide_overlay()
+
+def start_cron_job(region_keys):
+    global cron_job
+    global current_keys
+    stop_cron_job()
+    job = make_job(region_keys)
+    cron_job = cron.interval("60ms", job)
+    current_keys = region_keys
+   # show_overlay(region_keys)
+
+def toggle_wasd():
+    if cron_job:
+        stop_cron_job()
+    else:
+        start_cron_job(WASD5)
+
 def start_wasd():
     global holding_wasd
+    print("start_wasd")
     get_from_regions(hold_functions)()
     holding_wasd = True
 
@@ -77,6 +138,7 @@ ctx = Context()
 ctx.matches = r"""
 app.name: steam_app_779340
 app.name: steam_app_594570
+app.name: Warhammer3.exe
 """
 @ctx.action_class("user")
 class total_war_user:
@@ -87,10 +149,10 @@ class total_war_user:
             actions.user.mouse_click_or_zoom()
 
     def hiss_down():
-        start_wasd()
+        toggle_wasd()
 
-    def hiss_up():
-        release_all()
+    #def hiss_up():
+    #    toggle_wasd()
     
     def tw_right_drag():
         toggle_right()

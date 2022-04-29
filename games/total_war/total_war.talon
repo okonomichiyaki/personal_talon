@@ -1,18 +1,18 @@
 app.name: steam_app_779340
 app.name: steam_app_594570
+app.name: Warhammer3.exe
 -
 settings():
     key_wait = 16.0
     key_hold = 16.0
-
 end turn: key(enter)
 pause|paws: key(p)
-#zoom out: key(tab)
+lord: key(home)
 
 form: user.tw_right_drag()
 pan: user.tw_pan()
 slide: user.tw_slide()
-release: user.tw_release()
+release all: user.tw_release()
 charge:
     mouse_click(1)
     mouse_click(1)
@@ -49,3 +49,5 @@ zoom out:
     key(x:down)
     sleep(0.2)
     key(x:up)
+
+tack view: key(tab)
