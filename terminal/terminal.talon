@@ -1,6 +1,8 @@
 tag: terminal
 -
 
+word count lines [<user.text>]: "wc -l {text or ''}"
+
 bundle exec ruby: "bundle exec ruby"
 #paste that: key(cmd-v)
 
