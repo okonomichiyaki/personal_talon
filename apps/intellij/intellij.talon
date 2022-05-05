@@ -28,3 +28,5 @@ drop:
   "."
 
 #crimp:
+
+glue that: key(cmd-v)
