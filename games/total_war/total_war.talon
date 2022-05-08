@@ -1,6 +1,8 @@
 app.name: steam_app_779340
 app.name: steam_app_594570
 app.name: Warhammer3.exe
+app.name: Total War: WARHAMMER 2
+app.exe: Warhammer2.exe
 -
 settings():
     key_wait = 16.0

@@ -139,6 +139,8 @@ ctx.matches = r"""
 app.name: steam_app_779340
 app.name: steam_app_594570
 app.name: Warhammer3.exe
+app.name: Total War: WARHAMMER 2
+app.exe: Warhammer2.exe
 """
 @ctx.action_class("user")
 class total_war_user:
