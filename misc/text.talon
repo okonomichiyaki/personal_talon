@@ -28,9 +28,9 @@ blank: " "
 bar: " "
 slam: key(enter)
 sloop:
-    edit.up()
-    edit.line_end()
+    edit.line_start()
     key(enter)
+    edit.up()
 
 dupe line:
     edit.select_line()
