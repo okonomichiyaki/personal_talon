@@ -1,27 +1,11 @@
 os: windows
 -
+emoji: key(super-.)
 ge force record: key(alt-f9)
 on screen keyboard: key(super-ctrl-o)
 start menu: key(super)
 kana: key(alt-`)
 katakana: key(alt-capslock)
 hiragana: key(ctrl-capslock)
-
-cock: user.paste("か")
-keel: user.paste("き")
-cool: user.paste("く")
-catch: user.paste("け")
-coke: user.paste("こ")
-
-deep look:
-    key(ctrl:down)
-    key(c)
-    key(c)
-    key(ctrl:up)
-
-alt tab:
-    key(alt:down)
-    key(ctrl:down)
-    key(tab)
-    key(alt:up)
-    key(ctrl:up)
+deep look: key(ctrl:down c c ctrl:up)
+alt tab: user.switcher_menu()
