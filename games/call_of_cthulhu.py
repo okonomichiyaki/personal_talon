@@ -1,5 +1,5 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app, noise, cron
-from .unreal_mouse_look import surround_key_with_console
+from user.personal_talon.misc.unreal_mouse_look import surround_key_with_console
 
 running=False
 def toggle_running():
