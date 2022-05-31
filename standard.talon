@@ -7,11 +7,6 @@ floppy disk: edit.save()
 floppy: edit.save()
 throttle mode: user.enable_throttle()
 
-lip surf:
-    key(ctrl-shift-s)
-    speech.disable()
-    user.history_disable()
-
 glue that: edit.paste()
 
 copy under:
