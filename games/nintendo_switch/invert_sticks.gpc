@@ -1,0 +1,12 @@
+#pragma METAINFO("invert_sticks", 1, 0, "<author_name>")
+
+main {
+    set_val(STICK_2_X, inv(get_val(STICK_2_X)));
+    set_val(STICK_2_Y, inv(get_val(STICK_2_Y)));
+/*
+	set_val(BUTTON_17, get_val(BUTTON_15));
+	set_val(BUTTON_14, get_val(BUTTON_16));
+	set_val(BUTTON_15, get_val(BUTTON_17));
+	set_val(BUTTON_16, get_val(BUTTON_14));
+*/
+}
