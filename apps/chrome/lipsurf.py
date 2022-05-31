@@ -13,4 +13,4 @@ def focus_handler(window):
         print("[LipSurf] enabling speech")
         actions.speech.enable()
 
-ui.register("win_focus", focus_handler)
+#ui.register("win_focus", focus_handler)
