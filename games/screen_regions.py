@@ -90,7 +90,7 @@ def show_overlay(regions):
     hide_overlay()
     x_splits, y_splits = _get_splits(regions)
     w = WIDTH / x_splits
-    h = HEIGHT / y_splits        
+    h = HEIGHT / y_splits
     def on_draw(c):
         c.paint.stroke_width = 5
         c.paint.color = "FF69B4"
