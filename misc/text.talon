@@ -36,6 +36,5 @@ dupe line:
     edit.select_line()
     edit.copy()
     edit.paste()
-    edit.paste()
 
 say colon: ";"
