@@ -1,8 +1,10 @@
-os: windows
-and app.name: OBS Studio
-os: windows
-and app.exe: obs64.exe
+app.name: OBS Studio
+app.exe: obs64.exe
+app.name: Application Frame Host
+app.exe: ApplicationFrameHost.exe
 -
+tycho fury ghana: user.trv_furigana()
+tycho (test | debug): user.trv_debug()
 tycho copy: user.trv_copy()
 tycho translate: user.trv_translate()
 tycho deep look:
