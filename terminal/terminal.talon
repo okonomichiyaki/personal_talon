@@ -1,6 +1,10 @@
 tag: terminal
 -
 
+list: "ls "
+list here: "ls\n"
+list up: "ls ..\n"
+
 word count lines [<user.text>]: "wc -l {text or ''}"
 
 bundle exec ruby: "bundle exec ruby"
@@ -32,8 +36,6 @@ reverse search [<user.text>]:
     key(ctrl-r)
     "{text or ''}"
 
-go line start: key(ctrl-a)
-go line end: key(ctrl-e)
 copy line:
     key(ctrl-a)
     "echo \""

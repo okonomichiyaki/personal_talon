@@ -3,3 +3,7 @@ app.name: WindowsTerminal.exe
 -
 tag(): terminal
 tag(): user.git
+
+#go line start:
+#   edit.line_start()
+#   edit.line_start()
