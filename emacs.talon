@@ -139,6 +139,9 @@ other [window] quit: key(ctrl-c q)
 
 
 # ----- MOTION AND EDITING ----- #
+clear word: key(alt-d)
+clear word left: key(alt-backspace)
+
 cut line: key(home alt-1 ctrl-k)
 auto indent: key(alt-ctrl-\)
 
@@ -193,7 +196,7 @@ merge split: key("ctrl-c ^ r")
 
 # ----- SEARCH & REPLACE ----- #
 #action(edit.find): key(ctrl-s)
-action(user.find_reverse): key(ctrl-r)
+#action(user.find_reverse): key(ctrl-r)
 #action(edit.find_next): key(ctrl-s)
 #action(edit.find_previous): key(ctrl-r)
 

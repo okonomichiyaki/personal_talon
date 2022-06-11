@@ -81,7 +81,7 @@ class edit_actions:
     def find_previous(): actions.key("ctrl-s")
 
     def word_left(): actions.key("alt-b")
-    def word_write(): actions.key("alt-f")
+    def word_right(): actions.key("alt-f")
     def extend_word_left(): actions.key("shift-alt-b")
     def extend_word_right(): actions.key("shift-alt-f")
     def select_all(): actions.key("ctrl-x h")
