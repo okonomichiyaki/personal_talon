@@ -19,7 +19,7 @@ from PIL import Image
 PYTHON_PATH = r"C:\Users\michiaki\AppData\Local\Microsoft\WindowsApps\python.exe"
 SARU_PATH = r"C:\Users\michiaki\Dropbox\Headquarters\Code\saru.py"
 FULL_DIALOG_BOX = ui.Rect(500, 850, 800, 150) # magic numbers for TRV @ 1920x1080
-SCREENSHOT_FOLDER = r"C:\Users\michiaki\Dropbox\Headquarters\NOTES\Taiko Risshiden V\screenshots\ocr"
+NOTES_FOLDER = r"C:\Users\michiaki\Dropbox\Headquarters\NOTES\Taiko Risshiden V\saru"
 
 GREEN = "39FF14"
 RED = "EE4B2B"
@@ -33,32 +33,36 @@ fsize = 15
 screen_watcher = None
 draw_fns = []
 
-def get_screenshot_path(title=None, dated=True):
-    filename = "screenshot"
+def get_path(base, extension, title=None, dated=False, timed=False):
+    filename = base
     if dated:
-        date = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+        date = datetime.now().strftime("%Y-%m-%d")
         filename = filename + "-" + date
+    if timed:
+        time = datetime.now().strftime("T%H-%M-%S")
+        filename = filename + "-" + time
     if title:
         filename = filename + "-" + title
-    filename = filename + ".png"
-    path = os.path.expanduser(os.path.join(SCREENSHOT_FOLDER, filename))
+    filename = filename + "." + extension
+    path = os.path.join(NOTES_FOLDER, filename)
+    path = os.path.expanduser(path)
     return os.path.normpath(path)
 
 def take_screenshots(rect: ui.Rect):
     clear()
-    full_path = get_screenshot_path("xxxxx")
+    full_path = get_path("screenshot", "png", title="xxxxx", dated=True, timed=True)
     main_screen = screen.main_screen()
     full_img = screen.capture_rect(main_screen.rect)
     full_img.write_file(full_path)
 
-    watch_path = get_screenshot_path("watch", False)
+    watch_path = get_path("screenshot", "png", title="watch")
     h = rect.height / 9
     watch_rect = ui.Rect(rect.x, rect.y + h, rect.width, h)
     watch_img = screen.capture_rect(watch_rect)
     watch_img.write_file(watch_path)
 
     flash_rect(rect)
-    text_path = get_screenshot_path("text", False)
+    text_path = get_path("screenshot", "png", title="text")
     text_img = screen.capture_rect(rect)
     text_img.write_file(text_path)
     return (full_path, text_path, watch_path)
@@ -216,10 +220,41 @@ def capture_text(watch=True, translate=False):
     text = saru["original"]
     #os.remove(text_path)
     cleaned_up = text.replace("\n", "_").replace("?", "q")
-    os.rename(full_path, full_path.replace("xxxxx", cleaned_up))
+    new_path = full_path.replace("xxxxx", cleaned_up)
+    os.rename(full_path, new_path)
     if watch:
         start_watching(watch_path)
+    save_vocabulary(saru, new_path)
     return saru
+
+def filter_seen_vocabulary(new_words):
+    path = get_path("vocabulary", "txt")
+    with open(path, "a+") as file:
+        file.seek(0)
+        lines = file.read().split("\n")
+        old_words = set(lines)
+        new_words = [word for word in new_words if word not in old_words]
+        for word in new_words:
+            file.write(word)
+            file.write("\n")
+        return new_words
+
+def is_vocab(token):
+    # filter out punctuation and particles:
+    part_of_speech = token["part_of_speech"][0]
+    return part_of_speech != "補助記号" and part_of_speech != "助詞"
+
+def save_vocabulary(saru, img_path=None):
+    path = get_path("vocabulary", "md", dated=True)
+    words = [token["dictionary_form"] for token in saru["tokens"] if is_vocab(token)]
+    words = filter_seen_vocabulary(words)
+    with open(path, "a") as file:
+        if img_path:
+            img_file = os.path.basename(img_path)
+            file.write(f"![]({img_file})\n")
+        for word in words:
+            file.write(word)
+            file.write("\n")
 
 def debug():
     saru = capture_text(watch=True, translate=True)
