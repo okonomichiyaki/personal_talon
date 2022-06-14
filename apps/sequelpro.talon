@@ -1,5 +1,7 @@
 app.bundle: com.sequelpro.SequelPro
 app.bundle: com.sequel-ace.sequel-ace
+app.bundle: com.jetbrains.datagrip
+app.bundle: com.tinyapp.TablePlus
 -
 paste that: key(cmd-v)
 (ron current|run current): key(cmd-r)
