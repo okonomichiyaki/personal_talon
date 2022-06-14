@@ -10,6 +10,6 @@ class Actions:
         """click right mouse button, holding it down a little bit longer"""
         print("mouse long right")
         if button == 1:
-            ctrl.mouse_click(button=button, hold=200000)
+            ctrl.mouse_click(button=button, hold=200)
         else:
             ctrl.mouse_click(button=button)
