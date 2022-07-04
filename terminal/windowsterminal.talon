@@ -4,6 +4,10 @@ app.name: WindowsTerminal.exe
 tag(): terminal
 tag(): user.git
 
-#go line start:
-#   edit.line_start()
-#   edit.line_start()
+change code: "cd ~\Dropbox\Headquarters\Code \n"
+change talon: "cd ~\AppData\Roaming\\talon \n"
+virtual activate: ".\Scripts\Activate.ps1 \n"
+
+clean repeat: key(ctrl-l up enter)
+python repeat: key(ctrl-z enter up enter)
+python quit: key(ctrl-z enter)
