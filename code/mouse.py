@@ -14,7 +14,15 @@ from talon import (
     ui,
 )
 from talon_plugins import eye_mouse, eye_zoom_mouse
-from talon_plugins.eye_mouse import config, toggle_camera_overlay, toggle_control
+from talon_plugins.eye_mouse import config, toggle_camera_overlay
+
+# make zoom mouse feel snappier, albeit twitchier:
+eye_zoom_mouse.config.frames=5
+eye_zoom_mouse.config.eye_avg=5
+
+# shim to toggle old control verses experimental control 2
+def toggle_control(state):
+    actions.tracking.control2_toggle(state)
 
 key = actions.key
 self = actions.self

@@ -1,19 +1,19 @@
-mouse center:
-	mouse_move(960,540)
-mouse hide:
-	mouse_move(1921,1081)
+mouse center: mouse_move(960,540)
+mouse hide: mouse_move(1921,1081)
 
-snore mouse:
-	user.mouse_sleep()
+snore mouse: user.mouse_sleep()
 control mouse:
 	user.mouse_enable_control_mouse()
+  #  experimental.control2_toggle()
 	user.mouse_disable_zoom_mouse()
 zoom mouse:
 	user.mouse_enable_zoom_mouse()
 	user.mouse_disable_control_mouse()
+#  experimental.control2_toggle()
+experimental control mouse: experimental.control2_toggle()
 
 camera overlay: user.mouse_toggle_camera_overlay()
-run calibration: user.mouse_calibrate()	
+run calibration: user.mouse_calibrate()
 (click | touch):
 	mouse_click(0)
 	# close the mouse grid if open
