@@ -1,23 +1,24 @@
-from user.knausj_talon.code.screenshot import get_screenshot_path, flash_rect
+import inspect
+import json
+import os
+import re
+import subprocess
+from PIL import Image
+from datetime import datetime
+from itertools import groupby
+from subprocess import PIPE, CREATE_NO_WINDOW
+from typing import Optional
 
 from talon import Module, screen, ui, cron, app, actions, clip, Context, cron
 from talon.experimental import locate
 from talon.canvas import Canvas, Rect
 
-import inspect
-import os
-import re
-from subprocess import PIPE, CREATE_NO_WINDOW
-import subprocess
-from typing import Optional
-from datetime import datetime
-from itertools import groupby
+from user.knausj_talon.code.screenshot import get_screenshot_path, flash_rect
 
-import json
-from PIL import Image
 
-PYTHON_PATH = r"C:\Users\michiaki\AppData\Local\Microsoft\WindowsApps\python.exe"
-SARU_PATH = r"C:\Users\michiaki\Dropbox\Headquarters\Code\saru.py"
+#PYTHON_PATH = r"C:\Users\michiaki\AppData\Local\Microsoft\WindowsApps\python.exe"
+PYTHON_PATH = r"C:\Users\michiaki\Dropbox\Headquarters\Code\saru\Scripts\python.exe"
+SARU_PATH = r"C:\Users\michiaki\Dropbox\Headquarters\Code\saru\saru"
 FULL_DIALOG_BOX = ui.Rect(500, 850, 800, 150) # magic numbers for TRV @ 1920x1080
 NOTES_FOLDER = r"C:\Users\michiaki\Dropbox\Headquarters\NOTES\Taiko Risshiden V\saru"
 
@@ -32,6 +33,8 @@ text_margin = 10
 fsize = 15
 screen_watcher = None
 draw_fns = []
+
+repeater_fn = None
 
 def get_path(base, extension, title=None, dated=False, timed=False):
     filename = base
@@ -61,7 +64,7 @@ def take_screenshots(rect: ui.Rect):
     watch_img = screen.capture_rect(watch_rect)
     watch_img.write_file(watch_path)
 
-    flash_rect(rect)
+#    flash_rect(rect)
     text_path = get_path("screenshot", "png", title="text")
     text_img = screen.capture_rect(rect)
     text_img.write_file(text_path)
@@ -100,6 +103,8 @@ def start_watching(path):
              cron.cancel(screen_watcher)
              #os.remove(path)
              screen_watcher = None
+             if repeater_fn:
+                 repeater_fn()
      screen_watcher = cron.interval("500ms", job)
 
 def box_to_rect(box):
@@ -109,6 +114,8 @@ def box_to_rect(box):
 
 def show_furigana(fs):
     def on_draw(c):
+        print(inspect.getmembers(c.paint.typeface.fontstyle))
+
         for f in fs:
             text = f["reading"]
             x = FULL_DIALOG_BOX.x + f["x"]
@@ -122,7 +129,7 @@ def show_furigana(fs):
             x = x - rect.width / 2
             # y parameter to draw_text appears to be the baseline, and text is drawn above it
             c.paint.color = "000000"
-            c.paint.style = c.paint.Style.STROKE
+            c.paint.style = c.paint.Style.FILL
             c.draw_text(text, x, y)
     draw(on_draw)
 
@@ -195,7 +202,7 @@ def show_low_confidence(cdata):
 
 def call_saru(filename, furigana="all", translate=False):
     """Call saru.py as subprocess and parse output"""
-    command = [PYTHON_PATH, SARU_PATH, filename]
+    command = [PYTHON_PATH, "-m", "saru", filename]
     if furigana:
         command.append("-f")
         command.append(furigana)
@@ -257,6 +264,7 @@ def save_vocabulary(saru, img_path=None):
             file.write("\n")
 
 def debug():
+    global repeater_fn
     saru = capture_text(watch=True, translate=True)
     if saru == None:
         return
@@ -266,6 +274,7 @@ def debug():
     original = saru["original"]
     translation = saru["translation"]
     show_subtitles(translation)
+    repeater_fn = debug
 
 mod = Module()
 @mod.action_class

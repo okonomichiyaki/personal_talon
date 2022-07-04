@@ -24,4 +24,4 @@ toggle overlay: user.ns_toggle_overlay()
 show empty overlay: user.ns_empty_overlay()
 (close|hide) overlay: user.ns_hide_overlay()
 
-key(w): user.pop()
+#key(w): user.pop()

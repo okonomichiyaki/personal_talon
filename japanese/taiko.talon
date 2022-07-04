@@ -2,6 +2,8 @@ app.name: OBS Studio
 app.exe: obs64.exe
 app.name: Application Frame Host
 app.exe: ApplicationFrameHost.exe
+app.name: Taiko5DX
+app.exe: Taiko5DX.exe
 -
 tycho fury ghana: user.trv_furigana()
 tycho (test | debug): user.trv_debug()
