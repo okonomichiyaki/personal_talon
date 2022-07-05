@@ -142,7 +142,7 @@ other [window] quit: key(ctrl-c q)
 clear word: key(alt-d)
 clear word left: key(alt-backspace)
 
-cut line: key(home alt-1 ctrl-k)
+#cut line: key(home alt-1 ctrl-k)
 auto indent: key(alt-ctrl-\)
 
 mark: key(ctrl-space)
