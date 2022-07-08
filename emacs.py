@@ -1,3 +1,4 @@
+# originally from https://gist.githubusercontent.com/rntz/8624dfd21412e8e6da3107d974ca0892/raw/50112cd9dcf66ab67f46ccdba7c04ab30e744be7/emacs-generic.py
 from talon import Context, actions, ui, Module, app, clip
 
 mod = Module()
