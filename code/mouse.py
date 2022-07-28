@@ -20,9 +20,6 @@ from talon_plugins.eye_mouse import config, toggle_camera_overlay
 eye_zoom_mouse.config.frames=5
 eye_zoom_mouse.config.eye_avg=5
 
-# shim to toggle old control verses experimental control 2
-def toggle_control(state):
-    actions.tracking.control2_toggle(state)
 
 key = actions.key
 self = actions.self
@@ -146,16 +143,16 @@ class Actions:
 
     def mouse_toggle_control_mouse():
         """Toggles control mouse"""
-        toggle_control(not config.control_mouse)
+        actions.tracking.toggle_control(not config.control_mouse)
 
     # enables you to switch between control mode and zoom mode:
     def mouse_disable_control_mouse():
         """Disable control mouse"""
-        toggle_control(False)
+        actions.tracking.control_toggle(False)
 
     def mouse_enable_control_mouse():
         """Enable control mouse"""
-        toggle_control(True)
+        actions.tracking.control_toggle(True)
 
     def mouse_toggle_camera_overlay():
         """Toggles camera overlay"""
@@ -205,7 +202,7 @@ class Actions:
     def mouse_sleep():
         """Disables control mouse, zoom mouse, and re-enables cursor"""
         eye_zoom_mouse.toggle_zoom_mouse(False)
-        toggle_control(False)
+        actions.tracking.toggle_control(False)
         show_cursor_helper(True)
         stop_scroll()
 
@@ -261,7 +258,7 @@ class Actions:
         # enable 'control mouse' if eye tracker is present and not enabled already
         global control_mouse_forced
         if eye_mouse.tracker is not None and not config.control_mouse:
-            toggle_control(True)
+            actions.tracking.toggle_control(True)
             control_mouse_forced = True
 
     def copy_mouse_position():
@@ -395,7 +392,7 @@ def stop_scroll():
 
     global control_mouse_forced
     if control_mouse_forced and config.control_mouse:
-        toggle_control(False)
+        actions.tracking.toggle_control(False)
         control_mouse_forced = False
 
     scroll_job = None
