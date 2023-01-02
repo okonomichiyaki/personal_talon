@@ -2,7 +2,7 @@
 os: windows
 and app.exe: emacs.exe
 os: linux
-and app: emacs
+and app.name: /emacs/i
 -
 tag(): editor
 tag(): user.tabs

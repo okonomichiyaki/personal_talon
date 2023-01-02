@@ -7,7 +7,7 @@ ctx.matches = r'''
 os: windows
 and app.exe: emacs.exe
 os: linux
-and app: emacs
+and app.name: /emacs/i
 '''
 @mod.action_class
 class Actions:
