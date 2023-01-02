@@ -4,7 +4,10 @@ from talon import Context, actions, ui, Module, app, clip
 mod = Module()
 ctx = Context()
 ctx.matches = r'''
-app.exe: emacs.exe
+os: windows
+and app.exe: emacs.exe
+os: linux
+and app: emacs
 '''
 @mod.action_class
 class Actions:

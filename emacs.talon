@@ -1,11 +1,15 @@
 # originally from https://gist.githubusercontent.com/rntz/8624dfd21412e8e6da3107d974ca0892/raw/50112cd9dcf66ab67f46ccdba7c04ab30e744be7/emacs-generic.talon
-app.exe: emacs.exe
+os: windows
+and app.exe: emacs.exe
+os: linux
+and app: emacs
 -
 tag(): editor
 tag(): user.tabs
 tag(): user.splits
 tag(): user.line_commands
 
+comment this: key(alt-;)
 
 run python: user.emacs_command("run-python")
 python load file: key(ctrl-c ctrl-l enter)
@@ -127,7 +131,7 @@ other [window] file open: key(ctrl-x 4 ctrl-f)
 buffer kill: key(ctrl-x k)
 buffer bury: user.emacs_command("bur")
 buffer revert | revert buffer: user.emacs_command("rev-buf")
-buffer finish: key(ctrl-x ctrl-s ctrl-x #)
+buffer finish: key(ctrl-x ctrl-s ctrl-x)
 buffer list | switch: key(ctrl-x b)
 buffer next: key(ctrl-x right)
 buffer last: key(ctrl-x left)
