@@ -38,3 +38,6 @@ dupe line:
     edit.paste()
 
 say colon: ";"
+
+clear line:
+  key(delete)
