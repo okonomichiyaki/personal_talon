@@ -1,4 +1,5 @@
 mode: user.japanese
+mode: dictation
 language: ja_JP
 -
 <phrase>: insert(phrase)
