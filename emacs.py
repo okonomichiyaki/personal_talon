@@ -8,6 +8,8 @@ os: windows
 and app.exe: emacs.exe
 os: linux
 and app.name: /emacs/i
+os: mac
+and app.bundle: org.gnu.Emacs
 '''
 @mod.action_class
 class Actions:
