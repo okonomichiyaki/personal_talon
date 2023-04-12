@@ -1,8 +1,8 @@
 tag: terminal
 -
-list: "ls "
-list here: "ls\n"
-list up: "ls ..\n"
+list: "ls -lh "
+list here: "ls -lh\n"
+list up: "ls -lh..\n"
 
 change [<user.text>]: "cd {text or ''}"
 change [<user.text>] tab:
@@ -23,6 +23,11 @@ python mod: "python -m "
 python pip: "python -m pip "
 python interact: "python \n"
 python envy: "pyenv "
+
+envy em install: "nvm install "
+node pack man start: "npm start"
+node pack man install: "npm install "
+node pack exec: "npx "
 
 bundle exec ruby: "bundle exec ruby "
 

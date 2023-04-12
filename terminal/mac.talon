@@ -8,3 +8,5 @@ copy line:
   "echo \""
   edit.line_end()
   "\" | pbcopy"
+
+brew install: "brew install "
