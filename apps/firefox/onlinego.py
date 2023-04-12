@@ -1,4 +1,5 @@
 from talon import ctrl, ui, Module, Context, actions, clip, app, noise, cron
+from user.personal_talon import mouse
 
 step_job = None
 direction = 1
@@ -20,8 +21,8 @@ class Actions:
 
 ctx = Context()
 ctx.matches = r"""
-app.name: Firefox
-and title: Game Finished — Mozilla Firefox
+title: Game Finished
+app: firefox
 """
 @ctx.action_class("user")
 class online_go_user:
@@ -29,7 +30,7 @@ class online_go_user:
         """Change direction to forward"""
         global direction
         direction = 1
-    
+
     def direction_backward():
         """Change direction to backward"""
         global direction
@@ -38,7 +39,7 @@ class online_go_user:
     def step():
         """Step through game history one move"""
         step(direction)
-    
+
     def step_continuous():
         """Step through game history continuously"""
         global mouse_mode
@@ -52,19 +53,15 @@ class online_go_user:
         """Toggle pop for zoom mouse"""
         global mouse_toggle
         mouse_toggle = not mouse_toggle
-    
-    def pop():
+
+    def noise_trigger_pop():
         global mouse_mode
-        print("pop online go action")
         if step_job:
             stop_step()
         elif mouse_toggle:
-            actions.user.mouse_click_or_zoom()
+            mouse.click_or_zoom_or_stop_scroll()
         else:
             step(direction)
-
-    def hiss():
-        step(direction)
 
 def step(direction):
     if direction > 0:
@@ -79,12 +76,10 @@ def step_continuous_helper(direction):
 
 def start_step():
     global step_job
-    print("start_step")
     step_job = cron.interval("250ms", step_continuous_helper(direction))
 
 def stop_step():
     global step_job
-    print("stop_step")
     if step_job:
         cron.cancel(step_job)
         step_job = None

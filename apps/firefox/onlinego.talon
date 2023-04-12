@@ -1,9 +1,8 @@
-app.name: Firefox
-and title: Game Finished — Mozilla Firefox
+app: firefox
+title: Game Finished
 -
-
 beginning: key(home)
-
+mouse toggle: user.toggle_mouse()
 forward:
     user.direction_forward()
     user.step()
@@ -16,5 +15,3 @@ step forward:
 step backward:
     user.direction_backward()
     user.step_continuous()
-
-mouse|toggle mouse: user.toggle_mouse()
