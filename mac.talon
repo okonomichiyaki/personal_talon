@@ -13,3 +13,5 @@ preferences: key(cmd-,)
 
 shoomp left|super left: key(ctrl-alt-left)
 shoomp right|super right: key(ctrl-alt-right)
+
+clear way right: key(ctrl-k)
