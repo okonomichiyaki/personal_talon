@@ -31,6 +31,10 @@ node pack exec: "npx "
 
 bundle exec ruby: "bundle exec ruby "
 
+jay envy versions: "jenv versions \n"
+jay envy local: "jenv local \n"
+jay envy global: "jenv global \n"
+
 sig kill: key(ctrl-c)
 grep recurse:
     "grep -r '' ."
