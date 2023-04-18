@@ -12,10 +12,12 @@ class WinActions:
     def filename():
         title = actions.win.title()
         parts = title.split(" ")
+        result = title
         for part in parts:
             if "." in part:
-                return part
-        return title
+                result = part
+                break
+        return result
 
 @ctx.action_class('main')
 class Actions:
@@ -25,3 +27,8 @@ class Actions:
             ctrl.mouse_click(button=button, hold=200)
         else:
             ctrl.mouse_click(button=button)
+
+@ctx.action_class('user')
+class UserActions:
+    def split_window_horizontally():
+        actions.key('alt-h')

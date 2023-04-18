@@ -1,9 +1,12 @@
 os: mac
 and app.bundle: com.jetbrains.intellij.ce
 -
+tag(): user.tabs
+tag(): user.splits
 
 # window/tab management:
 close others: key(ctrl-shift-w)
+toggle structure: key(cmd-7)
 
 # navigation:
 go back: key(cmd-[)
@@ -15,6 +18,7 @@ go usages: key(alt-f7)
 
 # editing
 (import that|suggest that): key(alt-enter)
+clear left: edit.delete()
 
 # refactoring:
 generate code: key(cmd-n)
@@ -25,7 +29,11 @@ safe delete that:
   sleep(500ms)
   key(enter)
 
+# run
+run this: key(ctrl-r)
+
 # requires customized keymap:
+# split horizontally (from splits tag)
 open recent: key(alt-o)
 git blame: key(alt-a)
 file hunt: key(alt-s)
