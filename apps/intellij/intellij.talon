@@ -9,6 +9,8 @@ close others: key(ctrl-shift-w)
 toggle structure: key(cmd-7)
 
 # navigation:
+go top: key(cmd-pageup)
+go bottom: key(cmd-pagedown)
 go back: key(cmd-[)
 go forward: key(cmd-])
 go declaration: key(cmd-b)
@@ -17,8 +19,26 @@ go usages: key(alt-f7)
 (use|usage) next: key(ctrl-alt-down)
 
 # editing
+comment this: key(cmd-/)
 (import that|suggest that): key(alt-enter)
 clear left: edit.delete()
+
+cut line:
+  key(up)
+  edit.line_end()
+  key(right)
+  key(shift-down)
+  edit.cut()
+
+dupe line:
+  key(up)
+  edit.line_end()
+  key(right)
+  key(shift-down)
+  edit.copy()
+  edit.paste()
+  sleep(200ms)
+  edit.paste()
 
 # refactoring:
 generate code: key(cmd-n)
