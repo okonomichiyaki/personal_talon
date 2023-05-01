@@ -115,53 +115,31 @@ def start_slide():
     actions.mouse_drag(0)
     sliding = True
 
-mod = Module()
-@mod.action_class
-class Actions:
-    def tw_pan(): 
-        """pan action overrideable by contexts"""
-        print("pan action")
-    
-    def tw_slide():
-        """slide action overrideable by contexts"""
-        print("slide action")
-
-    def tw_release():
-        """release action overrideable by contexts"""
-        print("release action")
-
-    def tw_right_drag():
-        """right mouse drag action overrideable by contexts"""
-        print("right mouse drag action")
-
 ctx = Context()
 ctx.matches = r"""
-app.name: steam_app_779340
-app.name: steam_app_594570
-app.name: Warhammer3.exe
-app.name: Total War: WARHAMMER 2
 app.exe: Warhammer2.exe
+app.exe: warhammer3.exe
 """
 @ctx.action_class("user")
 class total_war_user:
-    def pop():
+    def noise_trigger_pop():
         if holding_middle or holding_wasd or sliding or holding_right:
             release_all()
         else:
             actions.user.mouse_click_or_zoom()
 
-    def hiss_down():
-        toggle_wasd()
+    # def hiss_down():
+    #     toggle_wasd()
 
     #def hiss_up():
     #    toggle_wasd()
-    
+
     def tw_right_drag():
         toggle_right()
 
     def tw_pan():
         toggle_middle()
-    
+
     def tw_slide():
         start_slide()
 

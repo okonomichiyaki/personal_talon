@@ -1,12 +1,13 @@
-app.name: steam_app_779340
-app.name: steam_app_594570
-app.name: Warhammer3.exe
-app.name: Total War: WARHAMMER 2
-app.exe: Warhammer2.exe
+app.exe: warhammer3.exe
 -
 settings():
     key_wait = 16.0
     key_hold = 16.0
+    user.gamepad_left_stick_left = "a"
+    user.gamepad_left_stick_right = "d"
+    user.gamepad_left_stick_up = "w"
+    user.gamepad_left_stick_down = "s"
+
 end turn: key(enter)
 pause|paws: key(p)
 lord: key(home)
@@ -32,10 +33,10 @@ in pick:
     key(shift:up)
 
 tick pick:
-    key(ctrl:down)
+    key(shift:down)
     sleep(0.1)
     mouse_click(0)
-    key(ctrl:up)
+    key(shift:up)
 
 wheel tick down: skip()
 wheel tick up: skip()
