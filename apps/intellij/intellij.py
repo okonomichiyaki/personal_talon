@@ -32,3 +32,4 @@ class Actions:
 class UserActions:
     def split_window_horizontally():
         actions.key('alt-h')
+

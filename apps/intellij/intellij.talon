@@ -19,11 +19,14 @@ go usages: key(alt-f7)
 (use|usage) next: key(ctrl-alt-down)
 
 # editing
+
 comment this: key(cmd-/)
 (import that|suggest that): key(alt-enter)
-clear left: edit.delete()
 
-cut line:
+clear left: edit.delete()
+clear word left: key(alt-backspace)
+
+snip line:
   key(up)
   edit.line_end()
   key(right)
@@ -50,7 +53,8 @@ safe delete that:
   key(enter)
 
 # run
-run this: key(ctrl-r)
+run (last|again): key(ctrl-r)
+run (this|that): key(ctrl-shift-r)
 
 # requires customized keymap:
 # split horizontally (from splits tag)
@@ -63,7 +67,7 @@ file hunt <user.text> [over]:
   insert(text)
 
 # idiosyncratic shortcuts:
-cucumber:
+cucumber|given when then:
   "// Given "
   key(enter)
   "// When "
@@ -75,3 +79,6 @@ cucumber:
 drop:
   key(enter)
   "."
+drip:
+  key(enter)
+  ","
