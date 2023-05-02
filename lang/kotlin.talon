@@ -10,3 +10,9 @@ tag: user.kotlin
   "fun `{text or ''}`() {{}}"
   key(left)
   key(enter)
+^before each funky$:
+  "@BeforeEach"
+  key(enter)
+  "fun beforeEach() {{}}"
+  key(left)
+  key(enter)
