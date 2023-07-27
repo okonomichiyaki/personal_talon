@@ -23,6 +23,10 @@ class Actions:
         # work around so pop stops scrolling without triggering zoom mouse:
         noise.unregister("pop",eye_zoom_mouse.zoom_mouse.on_pop)
 
+    def mouse_trigger_zoom_mouse():
+        """Trigger zoom mouse"""
+        click_or_zoom_or_stop_scroll()
+
 # this enables popping to stop scroll without also triggering zoom
 @ctx.action("user.noise_trigger_pop")
 def click_or_zoom_or_stop_scroll():

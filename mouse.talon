@@ -10,5 +10,6 @@ mouse hide: mouse_move(1921,1081)
 mouse snore: user.mouse_sleep()
 wheel tick down: user.mouse_scroll_down()
 wheel tick up: user.mouse_scroll_up()
-click: mouse_click(0)
 middle:  mouse_click(2)
+
+click: user.mouse_trigger_zoom_mouse()
