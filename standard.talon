@@ -7,7 +7,7 @@ floppy disk: edit.save()
 floppy: edit.save()
 throttle mode: user.enable_throttle()
 
-dot bat | glue that: edit.paste()
+glue that | clone here | glue here: edit.paste()
 
 copy under:
     mouse_click()
