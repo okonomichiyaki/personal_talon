@@ -4,6 +4,9 @@ and app.bundle: com.jetbrains.intellij.ce
 tag(): user.tabs
 tag(): user.splits
 
+# fix for muscle memory double click title bar (intellij bug: https://youtrack.jetbrains.com/issue/IDEA-274588)
+duke: key(ctrl-alt-enter)
+
 # window/tab management:
 close others: key(ctrl-shift-w)
 toggle structure: key(cmd-7)
@@ -45,7 +48,7 @@ dupe line:
 
 # refactoring:
 generate code: key(cmd-n)
-rename: key(shift-f6)
+rename|rename that: key(shift-f6)
 replace in path: key(ctrl-shift-r)
 safe delete that:
   key(cmd-delete)
@@ -60,7 +63,7 @@ run (this|that): key(ctrl-shift-r)
 # split horizontally (from splits tag)
 open recent: key(alt-o)
 git blame: key(alt-a)
-file hunt: key(alt-s)
+file (hunt|open): key(alt-s)
 file hunt <user.text> [over]:
   key(alt-s)
   sleep(500ms)
