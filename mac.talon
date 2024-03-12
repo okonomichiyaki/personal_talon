@@ -11,7 +11,9 @@ find a <user.text>:
 glue no format: key(cmd-shift-v)
 preferences: key(cmd-,)
 
-shoomp left|super left: key(ctrl-alt-left)
-shoomp right|super right: key(ctrl-alt-right)
+(shoomp|super|window) left: key(ctrl-alt-left)
+(shoomp|super|window) right: key(ctrl-alt-right)
 
 clear way right: key(ctrl-k)
+
+window (max|maximize): key(ctrl-alt-enter)
