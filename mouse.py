@@ -1,6 +1,6 @@
 from talon_plugins import eye_zoom_mouse
 from talon import noise, ctrl, Context, Module
-import user.knausj_talon.plugin.mouse.mouse as knausj
+import user.community.plugin.mouse.mouse as community
 
 # make zoom mouse feel snappier, albeit a tiny bit twitchier:
 eye_zoom_mouse.config.frames=5
@@ -27,8 +27,8 @@ class Actions:
 @ctx.action("user.noise_trigger_pop")
 def click_or_zoom_or_stop_scroll():
     """Triggers a normal mouse click, or triggers zoom mouse, or stops scroll wheel"""
-    if knausj.scroll_job:
-        knausj.stop_scroll()
+    if community.scroll_job:
+        community.stop_scroll()
     elif not eye_zoom_mouse.zoom_mouse.enabled:
         ctrl.mouse_click(button=0)
     elif eye_zoom_mouse.zoom_mouse.enabled:
