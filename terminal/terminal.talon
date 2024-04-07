@@ -18,6 +18,11 @@ up: ".."
 remove: "rm "
 long arg [<user.text>]: "--{text or ''}"
 
+curl pretty clipboard:
+    "curl "
+    edit.paste()
+    " | python -mjson.tool"
+
 python: "python "
 python mod: "python -m "
 python pip: "python -m pip "
